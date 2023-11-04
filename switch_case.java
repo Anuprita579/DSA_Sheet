@@ -1,0 +1,13 @@
+public class switch_case {
+    
+    public static double areaSwitchCase(int ch, double []a) {
+        switch(ch){
+            case 1://area of circle
+            return Math.PI*a[0]*a[0];
+            case 2://area of rectangle
+            return a[0]*a[1];
+            default:
+            return 0;
+        }
+    }
+}
