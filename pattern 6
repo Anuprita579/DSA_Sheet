@@ -1,4 +1,4 @@
-public class pattern6 {
+public class Solution {
     public static void nNumberTriangle(int n) {
         for (int i=1; i<=n; i++){
             for (int j=n; j>=i; j--){
