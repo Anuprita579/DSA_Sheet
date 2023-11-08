@@ -1,4 +1,4 @@
-public class data_type{
+public class Solution {
     public static int dataTypes(String type) {
         if(type.equals("Integer") || type.equals("Float")){
             return 4;

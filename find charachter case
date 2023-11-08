@@ -1,0 +1,36 @@
+//Method 1
+import java.util.Scanner;
+public class Solution {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char x = sc.next().charAt(0);
+        if (Character.isUpperCase(x)){
+            System.out.println(1);
+        }
+        else if (Character.isLowerCase(x)){
+            System.out.println(0);
+        }
+        else {
+            System.out.println(-1);
+        }
+    }
+}
+// Method 2
+import java.util.Scanner;
+public class Solution {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        char x = sc.next().charAt(0);
+        if (x>='A' && x<='Z'){
+            System.out.println("1");
+        }
+        else if (x>='a' && x<='z'){
+            System.out.println("0");
+        }
+        else {
+            System.out.println("-1");
+        }
+    }
+}

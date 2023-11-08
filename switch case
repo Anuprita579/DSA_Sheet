@@ -1,5 +1,4 @@
-public class switch_case {
-    
+public class Solution {
     public static double areaSwitchCase(int ch, double []a) {
         switch(ch){
             case 1://area of circle
