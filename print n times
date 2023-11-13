@@ -1,0 +1,15 @@
+import java.util.List;
+public class Solution {
+    public static void printNtimes(int n){
+        mycall(n);
+    }
+    public static void mycall(int n){
+        if(n==0){
+            return;
+        }
+        else{
+            mycall(n-1);
+            System.out.print("Coding Ninjas" + " ");
+        }
+    }
+}

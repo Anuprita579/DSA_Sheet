@@ -1,0 +1,17 @@
+public class Solution
+{
+    public static int[] printNos(int x) {
+        int[] ans = new int [x];
+        callmy(ans, x, 0);
+        return ans;
+    }
+    public static void callmy(int[] ans, int x, int i){
+        if(x==0){
+            return;
+        }
+        else{
+            callmy(ans, x-1, i+1);
+            ans[i] = x;
+        }
+    }
+}

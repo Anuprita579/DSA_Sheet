@@ -1,0 +1,13 @@
+public class Solution {
+    public static int[] printNos(int x) {
+        int []ans = new int [x];
+        callmy(ans, x);
+        return ans;
+    }
+    public static void callmy(int[] ans, int x){
+        if(x>1){
+            callmy(ans, x-1);
+        }
+        ans[x-1]=x;
+    }
+}
