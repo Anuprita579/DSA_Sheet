@@ -1,0 +1,54 @@
+//Leetcode
+class Solution {
+    public boolean isPalindrome(String s) {
+        s = s.toLowerCase();
+        s = s.replaceAll("[^a-zA-Z0-9]", "");
+        char[] a = s.toCharArray();
+        int j = s.length()-1;
+        reverse(a,0,j);
+        if(s.equals(String.valueOf(a))){
+            return true;
+        } 
+        else{
+            return false;
+        }
+    }
+    public static void reverse(char[]a, int i, int j) {
+        if(i>j){
+            return;
+        }
+        else{
+            char temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            reverse(a,++i, --j);
+        }
+    }
+}
+
+//Coding Ninjas
+public class Solution {
+    public static boolean isPalindrome(String str) {
+        char []a = str.toCharArray();
+        int len = str.length()-1;
+        reverse(a,len,0);
+        if(str.equals(String.valueOf(a))){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public static void reverse(char[]a, int len, int i){
+        if(i>len){
+            return;
+        }
+        else{
+            
+            char temp = a[i];
+            a[i] = a[len];
+            a[len] = temp;
+            reverse(a,--len, ++i);
+        }
+    }
+}
