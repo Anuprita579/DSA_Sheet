@@ -1,0 +1,25 @@
+// Brute Force
+import java.util.ArrayList;
+public class Solution {
+    public static ArrayList<Long> factorialNumbers(long n) {
+        ArrayList <Long> a = new ArrayList<>();
+        long f =1, x=2;
+        while(n>=f){
+            a.add(f);
+            f = fact(x);
+            x++;
+        }
+        return a;
+    }
+    public static long fact(long n){
+        if(n==1){
+            return 1;
+        }
+        else{
+            return n*fact(n-1);
+        }
+    }
+}
+
+
+//Optimized solution
