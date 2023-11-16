@@ -1,3 +1,49 @@
+// HASHMAP
+import java.util.HashMap;
+import java.util.Map;
+public class Solution {
+    public static int[] getFrequencies(int []v) {
+        HashMap <Integer, Integer> hm = new HashMap<>();
+        int n = v.length;
+        int [] a = new int[2];
+        for(int i=0; i<n; i++){
+            if(hm.containsKey(v[i])){
+                hm.put(v[i], hm.get(v[i])+1);
+            }
+            else{
+                hm.put(v[i], 1);
+            }
+        }
+        int maxf=0, maxk=0;
+        int minf=n, mink=0;
+        for (Map.Entry <Integer,Integer> e : hm.entrySet()){
+            int count = e.getValue();
+            int element = e.getKey();
+            if(count>maxf){
+                maxf = count;
+                maxk = element;
+            }
+            else if(count==maxf){
+                maxk = Math.min(maxk, element);
+            }
+
+            if(count < minf){
+                minf = count;
+                mink = element;
+            }
+            else if(count ==minf){
+                mink = Math.min(mink, element);
+            }
+        }
+        a[0]= maxk;
+        a[1] = mink;
+        return a;
+
+    }
+}
+
+
+//TREEMAP
 import java.util.TreeMap;
 import java.util.Map;
 public class Solution {
