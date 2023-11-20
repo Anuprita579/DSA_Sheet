@@ -1,0 +1,15 @@
+//Approach 1
+//TC = O(n)
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+
+    static int largestElement(int[] a, int n) {
+        int large = 0;
+        for(int i:a){
+            large = Math.max(large, i);
+        }
+        return large;
+    }
+}
