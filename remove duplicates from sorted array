@@ -1,0 +1,29 @@
+//Approach 1 (Brute Force)
+//TC = O(nlogn)
+import java.util.TreeSet;
+import java.util.ArrayList;
+public class Solution {
+	public static int removeDuplicates(ArrayList<Integer> arr,int n) {
+		TreeSet <Integer> ts = new TreeSet<>();
+		for(int i=0; i<n; i++){
+			ts.add(arr.get(i));
+		}
+		return ts.size();
+	}
+}
+
+//Leetcode
+//Approach 2
+//TC = O(n) 
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int i=0;
+        for(int j=1; j<nums.length; j++){
+            if(nums[j]!=nums[i]){
+                nums[i+1] = nums[j];
+                i++;
+            }
+        }
+        return i+1;
+    }
+}

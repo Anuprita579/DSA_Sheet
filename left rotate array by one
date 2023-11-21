@@ -1,0 +1,13 @@
+//Brute Force Approach
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+    static int[] rotateArray(int[] a, int n) {
+        int temp = a[0];
+        for(int i=1; i<=n-1; i++){
+            a[i-1] = a[i];
+        }
+        a[n-1] = temp;
+        return a;
+    }
+}
