@@ -1,0 +1,24 @@
+//Brute Force 
+//Using a TreeSet or HashSet
+//TC = O(nlogn) {adding} + O(nlogn) {adding} 
+
+//Better Solution
+//TC = O(n) + O(n)+ O(nlon(n)) = O(2n + nlog(n))
+import java.util.*;
+public class Solution {
+    public static List< Integer > sortedArray(int []a, int []b) {
+        ArrayList <Integer> li = new ArrayList<>();
+        for(int i=0; i<a.length; i++ ){
+            if(!li.contains(a[i])){
+                li.add(a[i]);
+            }
+        }
+        for(int i=0; i<b.length; i++ ){
+            if(!li.contains(b[i])){
+                li.add(b[i]);
+            }
+        }
+        Collections.sort(li);
+        return li;
+    }
+}
