@@ -22,3 +22,54 @@ public class Solution {
         return li;
     }
 }
+
+
+// Optimal Solution
+//TC = O(n1+n2) = because every element is iterated only once
+//SC = O(n1+n2) = worst case = if all the elements are unique
+import java.util.*;
+public class Solution {
+    public static List< Integer > sortedArray(int []a, int []b){
+        int n1 = a.length;
+        int n2 = b.length;
+        int i=0;
+        int j=0;
+        
+        ArrayList <Integer> li = new ArrayList<>();
+        while (i<n1 && j<n2){
+            if(a[i]<b[j]){
+                if(i==0 || a[i] !=a[i-1]){
+                    li.add(a[i]);
+                }
+                i++;
+            }
+            else if(a[i]>b[j]){
+                if(j==0 || b[j] !=b[j-1]){
+                    li.add(b[j]);
+                }
+                j++;
+            }
+            else{
+                if(i==0 || a[i] !=a[i-1]){
+                    li.add(a[i]);
+                }
+                i++;
+                j++;
+            }
+        }
+        while(i<n1){
+            if(i==0 || a[i] !=a[i-1]){
+                li.add(a[i]);
+            }
+            i++;
+        }
+        while(j<n2){
+            if(j==0 || b[j] !=b[j-1]){
+                li.add(b[j]);
+            }
+            j++;
+        }
+        
+        return li;
+    }
+}

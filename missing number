@@ -1,0 +1,71 @@
+//Brute Force Approach 
+//TC = O(n^2)
+//SC = O(1) = usage of flag
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int flag =0;
+        for(int i=0; i<n; i++){
+            flag =0;
+            for(int j=0; j<n; j++){
+                if(nums[j] == i){
+                    flag =1;
+                    break;
+                }
+            }
+            if (flag == 0){
+                return i;
+            }
+        }
+        return n;
+    }
+}
+//Better Approach 
+//TC = O(2n) = O(n) 
+//SC = O(n)
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n= nums.length;
+        HashSet <Integer> set = new HashSet <>();
+        for (int i: nums){
+            set.add(i);
+        } 
+        for(int i=0; i<n; i++){
+            if(!set.contains(i)){
+                return i;
+            }
+        }
+        return n;
+    }
+}
+//Optimal Solution 1
+//Sum method
+//TC = O(n)
+//SC = O(1)
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int sum = (n*(n+1))/2;
+        int sum1 = 0;
+        for (int i=0; i<n; i++){
+            sum1 += nums[i];
+        }
+        return sum - sum1;
+    }
+}
+
+//Optimal Solution 2
+//Tc = O(n)
+//SC = O(1)
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int xor=0;
+
+        for (int i=0; i<n; i++){
+            xor ^= i ^ nums[i];
+        }
+        return xor ^ n;
+        
+    }
+}
