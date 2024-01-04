@@ -1,0 +1,40 @@
+//LEETCODE
+//Brute Force Approach
+//TC = O(n^2)
+//SC = O(1)
+class Solution {
+    public int singleNumber(int[] a) {
+        int n = a.length;
+        for(int i=0; i<n; i++){
+            int num = a[i];
+            int count = 0;
+            for(int j=0; j<n; j++){
+                if(a[j]==num){
+                    count++;
+                }
+            }
+            if(count == 1){
+                return a[i];
+            }
+        }
+        return -1;
+    }
+}
+
+//Better Solution
+
+
+
+//Optimal Solution
+//TC = O(n)
+//SC = O(1)
+class Solution {
+    public int singleNumber(int[] a) {
+        int n = a.length;
+        int xor =0;
+        for(int i=0; i<n; i++){
+            xor ^= a[i]; 
+        }
+        return xor;  
+    }
+}
