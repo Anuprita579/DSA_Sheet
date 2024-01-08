@@ -1,0 +1,145 @@
+//Coding Ninjas
+public class Solution {
+    public static int majorityElement(int []a) {
+        int n=a.length;
+        int count =0;
+        for(int i=0; i<n; i++){
+            count =0;
+            for(int j=0; j<n; j++){
+                if(a[j] == a[i]){
+                    count++;
+                }
+            }
+            if(count>(n/2)){
+                return a[i];
+            }
+        }
+        return -1;
+    }
+}
+
+//Better Solution
+import java.util.HashMap;
+import java.util.Map;
+
+public class Solution {
+    public static int majorityElement(int []a) {
+        int n = a.length;
+        HashMap <Integer, Integer> map = new HashMap<>();
+        for(int i:a){
+            int j = map.getOrDefault(i, 0);
+            map.put(i, j+1);
+        }
+        for(Map.Entry<Integer, Integer> value : map.entrySet()){
+            if(value.getValue()> (n/2)){
+                return value.getKey();
+            }
+        }
+        return -1;
+    }
+}
+
+//Optimal 
+public class Solution {
+    public static int majorityElement(int []a) {
+        int n= a.length;
+        int count =0, count1=0, el =0;
+        for (int i=0; i<n; i++){
+            if(count ==0){
+                count=1;
+                el = a[i];
+            }
+            else if(el == a[i]){
+                count++;
+            }
+            else{
+                count--;
+            }
+        }
+        for(int i=0; i<n; i++){
+            if(el == a[i]){
+                count1++;
+            }
+        }
+        if(count1 > (n/2)){
+            return el;
+        }
+        return -1;
+    }
+}
+
+
+
+
+//LEETCODE
+//Brute Force
+class Solution {
+    public int majorityElement(int[] nums) {
+        int n = nums.length;
+        int count =0;
+        for(int i=0; i<n; i++){
+            count =0;
+            for (int j=0; j<n; j++){
+                if(nums[j]==nums[i]){
+                    count++;
+                }
+            }
+            if(count > (n/2)){
+                return nums[i];
+            }
+        }
+        return -1;
+    }
+}
+
+//Better Solution
+//TC = O(nlog(n)) + O(n)
+//SC = O(n)
+class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap <Integer, Integer> map = new HashMap <>();
+        for(int i: nums){
+            int j = map.getOrDefault(i, 0);
+            map.put(i, j+1);
+        }
+        for(Map.Entry<Integer, Integer> it : map.entrySet()){
+            if(it.getValue() > (nums.length/2)){
+                return it.getKey();
+            }
+        }
+        return -1;
+        
+    }
+}
+
+//Optimal Solution
+//TC = O(2n)
+class Solution {
+    public int majorityElement(int[] nums) {
+        int n = nums.length;
+        int count =0;
+        int count1=0;
+        int el=0;
+        for (int i=0 ; i<n ;i++){
+            if(count == 0){
+                count = 1;
+                el = nums[i];
+            }
+            else if(el == nums[i]){
+                count++;
+            }
+            else{
+                count --;
+            }
+        }
+        for(int i=0; i<n; i++){
+            if(el == nums[i]){
+                count1++;
+            }
+        }
+        if(count1 > (n/2)){
+            return el;
+        }
+        return -1;
+    }
+}
