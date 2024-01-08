@@ -1,0 +1,95 @@
+//CODING NINJA
+//Brute force 
+public class Solution {
+    public static String read(int n, int []book, int target){
+        for (int i=0; i<n; i++){
+            for (int j=i+1; j<n; j++){
+                if (book[i] + book[j] == target){
+                    return "YES";
+                }
+            }
+        }
+        return "NO";
+    }
+}
+
+//Better Solution
+//TC = O(n)
+import java.util.HashMap;
+public class Solution {
+    public static String read(int n, int []book, int target){
+        HashMap <Integer, Integer> map = new HashMap <>();
+        for (int i=0; i<n; i++){
+            int a = book[i];
+            int more = target - a;
+            if(map.containsKey(more)){
+                return "YES";
+            }
+            map.put(book[i], i); 
+        }
+        return "NO";
+    }
+}
+
+//Optimal Solution
+//TC = O(n) + O(nlog(n)) [for sorting array]
+//SC = O(n) [array used for sorting]     or else it would be O(1) 
+import java.util.Arrays;
+public class Solution {
+    public static String read(int n, int []book, int target){
+        Arrays.sort(book);
+        int left = 0, right = n-1;
+        while(left<right){
+            int sum = book[left] + book[right];
+            if(sum == target){
+                return "YES";
+            }
+            else if(sum<target){
+                left++;
+            }
+            else{
+                right--;
+            }
+        }
+        return "NO";
+    }
+}
+
+//LEETCODE
+//Brute Force 
+//TC = O(n^2)
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Scanner sc = new Scanner (System.in);
+        for (int i=0; i<nums.length; i++)
+        {
+            for (int j=i+1; j<nums.length; j++)
+            {
+                if (nums[i] + nums[j] == target)
+                {
+                    return new int[] {i,j};
+                }
+            }
+        }
+    return new int [] {};
+    }
+}
+
+//Better Approach
+//TC = O(nlog(n))
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap <Integer, Integer> map = new HashMap <>();
+        for (int i=0; i<nums.length; i++){
+            int a = nums[i];
+            int more = target - a;
+            if (map.containsKey(more)){
+                return new int []{map.get(more), i};
+            }
+            map.put(nums[i], i);
+        }
+        return new int []{-1,-1};
+    }
+}
+
+
