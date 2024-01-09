@@ -1,0 +1,128 @@
+//CONDING NINJA
+//Brute Force
+//TC = O(n^3)
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+	
+	public static long maxSubarraySum(int[] a, int n) {
+		long maxi = Long.MIN_VALUE;
+		for(int i=0; i<n; i++){
+			for(int j=i; j<n; j++){
+				long sum =0;
+				for(int k=i; k<=j; k++){
+					sum += a[k];
+				}
+				maxi = Math.max(maxi, sum);
+			}
+		}
+		return Math.max(maxi,0);
+	}
+
+}
+
+//Better Approach 
+//TC = O(n^2)
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+	
+	public static long maxSubarraySum(int[] a, int n) {
+		long maxi = Long.MIN_VALUE;
+		for(int i=0; i<n; i++){
+			long sum =0;
+			for(int j=i; j<n; j++){
+				sum += a[j];
+				maxi = Math.max(maxi, sum);
+			}
+		}
+		return Math.max(maxi,0);
+	}
+
+}
+//Optimal Solution 
+//Kadane's Algorithm
+import java.util.* ;
+import java.io.*; 
+
+public class Solution {
+	
+	public static long maxSubarraySum(int[] a, int n) {
+		long maxi = Long.MIN_VALUE;
+		long sum =0;
+		for (int i=0; i<n; i++){
+			sum += a[i];
+			if(sum>0){
+				maxi = Math.max(maxi, sum);
+			} 
+			if(sum<0){
+				sum = 0;
+			}
+		}
+		return Math.max(maxi,0);
+	}
+
+}
+
+//LEETCODE 
+//Brute Force
+//TC = O(n^3)
+//SC = O(1)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int n = nums.length;
+        int maxi = Integer.MIN_VALUE;
+        for(int i=0; i<n; i++){
+            for(int j=i; j<n; j++){
+                int sum =0;
+                for(int k=i; k<=j; k++){
+                    sum += nums[k];
+                }
+                maxi = Math.max(maxi, sum);
+            }
+        }
+        return maxi;
+    }
+}
+
+//Better Approach
+//TC = O(n^2)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int n = nums.length;
+        int maxi = Integer.MIN_VALUE;
+        for(int i=0; i<n; i++){
+            int sum =0;
+            for(int j=i; j<n; j++){
+                sum += nums[j];
+                maxi = Math.max(maxi, sum);
+            }
+        }
+        return maxi;
+    }
+}
+
+//Optimal Solution
+//Tc = O(n)
+//SC = O(1)
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int maxi = Integer.MIN_VALUE;
+        int sum =0;
+        for (int i=0; i<nums.length; i++){
+            sum += nums[i];
+            if(sum >maxi){
+                maxi = sum;
+            }
+            if(sum <0){
+                sum = 0;
+            } 
+        }
+        return maxi;
+        
+    }
+}
+
+
