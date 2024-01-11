@@ -25,6 +25,26 @@ public class Solution {
     }
 }
 
+//Optimal Solution
+public class Solution {
+    public static int[] alternateNumbers(int []a) {
+        int n = a.length;
+        int pos = 0, neg = 1; 
+        int []ans = new int[n];
+        for(int i=0; i<n; i++){
+            if(a[i]<0){
+                ans[neg] = a[i];
+                neg += 2; 
+            }
+            else{
+                ans[pos] = a[i];
+                pos += 2;
+            }
+        }
+        return ans;
+    }
+}
+
 //LEETCODE 
 //TC = O(n^2) 
 class Solution {
@@ -48,5 +68,26 @@ class Solution {
             nums[(i*2)+1] = neg[i];
         }
         return nums;
+    }
+}
+
+//Optimal Solution
+//TC = O(n)
+class Solution {
+    public int[] rearrangeArray(int[] nums) {
+        int n = nums.length;
+        int pos = 0, neg = 1; 
+        int []ans = new int [n];
+        for (int i=0; i<n; i++){
+            if(nums[i]<0){
+                ans[neg] = nums[i];
+                neg += 2; 
+            }
+            else{
+                ans[pos] = nums[i];
+                pos += 2; 
+            }
+        }
+        return ans;
     }
 }
