@@ -1,0 +1,45 @@
+//Coding Ninjas
+//TC = O(n^2) + O(nlog(n))
+//SC = O(n)
+import java.util.*;
+public class Solution {
+    public static List< Integer > superiorElements(int []a) {
+        
+        int n = a.length;
+        ArrayList <Integer> list = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            boolean leader = true;
+            for(int j=i+1; j<n; j++){
+                if(a[j]>=a[i]){
+                    leader = false;
+                    break;
+                }
+            }
+            if(leader == true){
+                list.add(a[i]);
+            }
+        }
+        Collections.sort(list);
+        return list;
+    }
+}
+
+//Optimal Solution
+//Tc = O(n) + O(nlogn)
+//SC = O(n)
+import java.util.*;
+public class Solution {
+    public static List< Integer > superiorElements(int []a) {
+        int n = a.length;
+        int maxi = Integer.MIN_VALUE;
+        ArrayList <Integer> list = new ArrayList<>();
+        for(int i=n-1; i>=0; i--){
+            if(a[i]>maxi){
+                list.add(a[i]);
+                maxi = a[i];
+            }
+        }
+        Collections.sort(list);
+        return list;
+    }
+}
