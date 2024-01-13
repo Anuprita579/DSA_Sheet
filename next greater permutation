@@ -40,18 +40,18 @@ public class Solution {
 class Solution {
     public void nextPermutation(int[] a) {
         int n = a.length;
-        int index  = -1;
+        int index = -1;
         for (int i=n-2; i>=0; i--){
             if(a[i]<a[i+1]){
-                index =i;
+                index = i;
                 break;
             }
         }
-        if(index ==-1){
-            Arrays.sort(a);
+        if (index == -1){
+            reverse(a, 0, n-1);
             return;
         }
-        for (int i=n-1; i>index; i--){
+        for(int i=n-1; i>index; i--){
             if(a[i]>a[index]){
                 int temp = a[i];
                 a[i] = a[index];
@@ -59,12 +59,18 @@ class Solution {
                 break;
             }
         }
-        int []sublist = new int [n-index];
-        int j = 0;
-        for (int i=index+1; i<n; i++){
-            sublist[j] = a[i];
-            j++;
+        reverse(a, index+1, n-1);
+    }
+    public void reverse(int []a, int start, int end){
+        while(start<end){
+            swap(a,start, end);
+            start++;
+            end--;
         }
-        Arrays.sort(sublist);
+    }
+    public void swap(int []a, int i, int j){
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
     }
 }
